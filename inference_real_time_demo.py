@@ -1,5 +1,3 @@
-import argparse
-import json
 import os
 import shutil
 import numpy as np
@@ -224,6 +222,10 @@ if __name__ == "__main__":
     with torch.no_grad():
         # get diff model and load checkpoint
         diff_net = get_diff_net(cfg, device).to(device)
+        
+        # get renderer
+        renderer = get_netG("/content/drive/MyDrive/DreamTalkCheckPoints/renderer.pt", device)
+        
         # generate face motion
         face_motion_path = os.path.join(tmp_dir, f"{output_name}_facemotion.npy")
         inference_one_video(
@@ -236,8 +238,7 @@ if __name__ == "__main__":
             device,
             max_audio_len=max_gen_len,
         )
-        # get renderer
-        renderer = get_netG("checkpoints/renderer.pt", device)
+        
         # render video
         output_video_path = f"output_video/{output_name}.mp4"
         render_video(

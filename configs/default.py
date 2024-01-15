@@ -83,7 +83,7 @@ _C.CF_GUIDANCE.NULL_PROB = 0.1
 _C.CF_GUIDANCE.SCALE = 1.0
 
 _C.INFERENCE = CN()
-_C.INFERENCE.CHECKPOINT = "checkpoints/denoising_network.pth"
+_C.INFERENCE.CHECKPOINT = "/content/drive/MyDrive/DreamTalkCheckPoints/denoising_network.pth"
 
 
 def get_cfg_defaults():
